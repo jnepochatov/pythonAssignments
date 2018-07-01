@@ -1,0 +1,60 @@
+ef countWords(ifile):
+    '''takes infile and returns alphebatized and counted list of words in file'''
+    infile = open(ifile, 'r')
+    content = infile.readlines()
+    infile.close()
+    punc = '!,.:;?'
+    for i in punc:
+        content = content.replace(i,' ')
+    content = content.lower()
+    content = content.split()
+    content.sort()
+    newlst = []
+    for word in content:
+        if word not in newlst:
+            num = content.count(word)
+            newlst.append(word)
+            newlst.append(num)
+    return newlst 
+
+def lineCount(ifile,ofile):
+    '''takes infile and returns ofile with line numbers'''
+    infile = open(ifile, 'r')
+    outfile = open(ofile, 'w')
+    line = infile.readlines()
+    for i in range(0,len(line)): 
+        outfile.write(str(i+1) + '\t' + line[i])
+    infile.close()
+    outfile.close()   
+
+def saveLine(ifile,ofile,n):
+    '''input is the ifile output is the first n lines'''
+    infile = open(ifile, 'r')
+    outfile = open(ofile, 'w')
+    line = infile.readlines(0,n)
+    for i in range(n):
+        infile.readline(i-n)
+        outfile.write(line[n])
+    infile.close()
+    outfile.close()
+
+def makeTable(ifile,ofile):
+    '''input is a document with scattered information output is that info organized into a graph'''
+    infile = open(ifile,'r')
+    outfile = open(ofile, 'w')
+    outfile.write('C1    |C2    |C3\n___________')
+    linelst=infile.readlines()
+    avlst=[]
+    for line in linelst:
+        smlst=line.split(',')
+        c1=smlst[0].upper().strip()
+        c2=float(smlst[1].strip())
+        avlst.append(c2)
+        c3=smlst[2].strip()
+        c3=c3[0:2]
+        outfile.write('\n{:<6}|(:>6}| (:>3}\n'.format(c1,float(c2),c3))
+    outfile.write('\nAverage C2 is: (:.4)'.format(sum(avlst)/len(avlst)))
+    infile.close()
+    outfile.close()
+    
+        
