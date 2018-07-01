@@ -1,0 +1,32 @@
+ef findLast(lst,c):
+	for i in lst:
+		if i[2]=='c' or i[2]=='C':
+			print(i[0:2]+'{}'.format('*'))
+            
+
+def modN(s,n):
+	s=type(str)
+	num=type(int(num))
+	for i in s:
+		s%num
+		if s%num == num:
+			print('{} is divisible by {}'.format(s,num))
+
+def minAbs(a,b,c):
+	x=int(x)
+	y=int(y)
+	z=int(z)
+	if abs (x) < y and z:
+		print(x)
+	if abs (y) < x and z:
+		print(y)
+	if abs (z) < x and y:
+		print(z)
+
+
+def showStars(num):
+	n=int(n)
+	for i in range(n):
+		print('*'*n)
+	print('-'*n)
+        
